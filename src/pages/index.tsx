@@ -10,6 +10,7 @@ import { GetServerSideProps } from "next";
 import styles from "../styles/pages/Home.module.css";
 import { CountdownProvider } from "../contexts/CountdownContext";
 import { ChallengesProvider } from "../contexts/ChallengesContext";
+import { SideBar } from "../components/SideBar";
 
 interface HomeProps {
   level: number;
@@ -28,6 +29,7 @@ export default function Home(props: HomeProps) {
         <Head>
           <title>Início | move.it</title>
         </Head>
+
         <ExperienceBar />
 
         <CountdownProvider>
