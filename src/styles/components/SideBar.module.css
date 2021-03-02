@@ -38,6 +38,11 @@
   .main > .item {
     width: 62px;
   }
+
+  .main > .item:hover {
+    border-left: none;
+    border-bottom: 4px solid #5965e0;
+  }
 }
 .container header {
   margin-top: 2rem;

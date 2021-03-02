@@ -8,6 +8,10 @@
   flex-direction: column;
 }
 
+.rootContainer {
+  display: flex;
+}
+
 .container section {
   flex: 1;
   display: grid;
@@ -22,6 +26,10 @@
     margin-top: 1rem;
     padding-bottom: 2rem;
     gap: 3.65rem;
+  }
+
+  .rootContainer {
+    flex-direction: column;
   }
 }
 
