@@ -1,75 +1,36 @@
-import Head from "next/head";
+import styles from "../styles/pages/Landing.module.css";
+import { ImGithub } from "react-icons/im";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
-import { CompletedChallenges } from "../components/CompletedChallengers";
-import { Countdown } from "../components/Countdown";
-import { ExperienceBar } from "../components/ExperienceBar";
-import { Profile } from "../components/Profile";
-import { ChallengeBox } from "../components/ChallengeBox";
-import { GetServerSideProps } from "next";
-import { SideBar } from "../components/SideBar";
-
-import styles from "../styles/pages/Home.module.css";
-import { CountdownProvider } from "../contexts/CountdownContext";
-import { ChallengesProvider } from "../contexts/ChallengesContext";
-
-interface HomeProps {
-  level: number;
-  currentExperience: number;
-  challengesCompleted: number;
-}
-
-export default function Home(props: HomeProps) {
+export default function Landing() {
   return (
-    <ChallengesProvider
-      level={props.level}
-      currentExperience={props.currentExperience}
-      challengesCompleted={props.challengesCompleted}
-    >
-      <div className={styles.rootContainer}>
-        <SideBar />
-        <div className={styles.container}>
-          <Head>
-            <title>Início | move.it</title>
-          </Head>
+    <div className={styles.container}>
+      <div>
+        <img src="/icons/big-logo.svg" alt="icon-tsg" className={styles.big} />
+      </div>
 
-          <ExperienceBar />
+      <div className={styles.content}>
+        <div className={styles.mainContainer}>
+          <img
+            src="/logo-full.svg"
+            alt="logo-full"
+            className={styles.logoFull}
+          />
+          <br />
+          <strong>Bem-vindo</strong>
+          <div className={styles.git}>
+            <ImGithub className={styles.icon} />
+            <strong>Faça login com seu Github para começar</strong>
+          </div>
 
-          <CountdownProvider>
-            <section>
-              <div>
-                <Profile />
-                <CompletedChallenges />
-
-                <Countdown />
-              </div>
-              <div>
-                <ChallengeBox />
-              </div>
-            </section>
-          </CountdownProvider>
+          <div className={styles.inputContainer}>
+            <input type="text" placeholder="Digite seu username" />
+            <button type="button">
+              <AiOutlineArrowRight className={styles.buttonIcon} />
+            </button>
+          </div>
         </div>
       </div>
-    </ChallengesProvider>
+    </div>
   );
 }
-//? Recebe um parametro chamado de contexto(ctx)
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  //! Essa parte roda dentro do servidor node
-  /*
-  ? Basicamente se tu colocar um console.log, não aparecerá no browser
-  ? aparecerá no terminal.
-  */
-
-  const { level, currentExperience, challengesCompleted } = ctx.req.cookies;
-
-  //! Ao retornar esses dados é possivel pegar pelas props na pag.
-
-  //! Lembrando que os cookies retornam dados em string, portanto se é necessário converter!
-  return {
-    props: {
-      level: Number(level),
-      currentExperience: Number(currentExperience),
-      challengesCompleted: Number(challengesCompleted),
-    },
-  };
-};

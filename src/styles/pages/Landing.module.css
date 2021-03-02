@@ -1,0 +1,126 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: var(--blue);
+
+  display: flex;
+  align-items: center;
+  color: #ffff;
+}
+
+.content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4rem;
+}
+
+.content .mainContainer {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3rem;
+}
+
+.mainContainer > strong {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.git {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 318px;
+  max-height: 18px;
+
+  gap: 2rem;
+
+  color: #b2b9ff;
+}
+
+.git > strong {
+  font-size: 20px;
+  font-weight: 400;
+  max-width: 258px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 340px;
+  height: 60px;
+}
+
+.inputContainer input {
+  border: none;
+
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to right, var(--blue-dark), var(--blue));
+  border-radius: 8px;
+  text-align: center;
+  outline: 0;
+  color: #b2b9ff;
+}
+
+.inputContainer input::placeholder {
+  color: #b2b9ff;
+}
+
+.inputContainer button {
+  border: none;
+  height: 60px;
+  width: 80px;
+  background: var(--blue-dark);
+  color: var(--white);
+
+  border-radius: 0 8px 8px 0px;
+}
+
+.inputContainer button .buttonIcon {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 720px) {
+  .container {
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+
+    background-image: url("/icons/big-logo.svg");
+  }
+
+  .big {
+    display: none;
+  }
+
+  .logoFull {
+    margin: 0 1rem;
+  }
+
+  .mainContainer {
+    margin: 0 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .inputContainer {
+    width: 280px;
+    height: 60px;
+  }
+}
