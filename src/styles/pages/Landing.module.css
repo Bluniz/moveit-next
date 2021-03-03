@@ -1,0 +1,112 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: var(--blue);
+
+  display: flex;
+  align-items: center;
+  color: #ffff;
+}
+
+.content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4rem;
+}
+
+.content .mainContainer {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3rem;
+}
+
+.mainContainer > strong {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.git {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 318px;
+  max-height: 18px;
+
+  gap: 2rem;
+
+  color: #b2b9ff;
+}
+
+.git > strong {
+  font-size: 20px;
+  font-weight: 400;
+  max-width: 258px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 340px;
+  height: 60px;
+}
+
+.inputContainer button {
+  border: none;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to right, var(--blue-dark), var(--blue));
+  color: var(--white);
+
+  border-radius: 8px;
+
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.inputContainer button:hover {
+  color: var(--blue-dark);
+}
+
+@media (max-width: 720px) {
+  .container {
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+
+    background-image: url("/icons/big-logo.svg");
+  }
+
+  .big {
+    display: none;
+  }
+
+  .logoFull {
+    margin: 0 1rem;
+  }
+
+  .mainContainer {
+    margin: 0 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .inputContainer {
+    width: 280px;
+    height: 60px;
+  }
+}

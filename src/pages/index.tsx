@@ -1,70 +1,47 @@
-import Head from "next/head";
+import styles from "../styles/pages/Landing.module.css";
+import { ImGithub } from "react-icons/im";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { LogInContext } from "../contexts/LoginContext";
 
-import { CompletedChallenges } from "../components/CompletedChallengers";
-import { Countdown } from "../components/Countdown";
-import { ExperienceBar } from "../components/ExperienceBar";
-import { Profile } from "../components/Profile";
-import { ChallengeBox } from "../components/ChallengeBox";
-import { GetServerSideProps } from "next";
+export default function Landing() {
+  const { logged, logIn } = useContext(LogInContext);
+  const router = useRouter();
 
-import styles from "../styles/pages/Home.module.css";
-import { CountdownProvider } from "../contexts/CountdownContext";
-import { ChallengesProvider } from "../contexts/ChallengesContext";
+  useEffect(() => {
+    if (logged) {
+      router.push("/home");
+    }
+  }, [logged]);
 
-interface HomeProps {
-  level: number;
-  currentExperience: number;
-  challengesCompleted: number;
-}
-
-export default function Home(props: HomeProps) {
   return (
-    <ChallengesProvider
-      level={props.level}
-      currentExperience={props.currentExperience}
-      challengesCompleted={props.challengesCompleted}
-    >
-      <div className={styles.container}>
-        <Head>
-          <title>Início | move.it</title>
-        </Head>
-        <ExperienceBar />
-
-        <CountdownProvider>
-          <section>
-            <div>
-              <Profile />
-              <CompletedChallenges />
-
-              <Countdown />
-            </div>
-            <div>
-              <ChallengeBox />
-            </div>
-          </section>
-        </CountdownProvider>
+    <div className={styles.container}>
+      <div>
+        <img src="/icons/big-logo.svg" alt="icon-tsg" className={styles.big} />
       </div>
-    </ChallengesProvider>
+
+      <div className={styles.content}>
+        <div className={styles.mainContainer}>
+          <img
+            src="/logo-full.svg"
+            alt="logo-full"
+            className={styles.logoFull}
+          />
+          <br />
+          <strong>Bem-vindo</strong>
+          <div className={styles.git}>
+            <ImGithub className={styles.icon} />
+            <strong>Faça login com seu Github para começar</strong>
+          </div>
+
+          <div className={styles.inputContainer}>
+            <button type="button" onClick={logIn}>
+              Entrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
-//? Recebe um parametro chamado de contexto(ctx)
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  //! Essa parte roda dentro do servidor node
-  /*
-  ? Basicamente se tu colocar um console.log, não aparecerá no browser
-  ? aparecerá no terminal.
-  */
-
-  const { level, currentExperience, challengesCompleted } = ctx.req.cookies;
-
-  //! Ao retornar esses dados é possivel pegar pelas props na pag.
-
-  //! Lembrando que os cookies retornam dados em string, portanto se é necessário converter!
-  return {
-    props: {
-      level: Number(level),
-      currentExperience: Number(currentExperience),
-      challengesCompleted: Number(challengesCompleted),
-    },
-  };
-};
