@@ -1,19 +1,11 @@
 import styles from "../styles/pages/Landing.module.css";
 import { ImGithub } from "react-icons/im";
-import { AiOutlineArrowRight } from "react-icons/ai";
-import { useContext, useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { LogInContext } from "../contexts/LoginContext";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/LoginContext";
+import { getSession, signIn } from "next-auth/client";
 
 export default function Landing() {
-  const { logged, logIn } = useContext(LogInContext);
-  const router = useRouter();
-
-  useEffect(() => {
-    if (logged) {
-      router.push("/home");
-    }
-  }, [logged]);
+  const { logIn } = useContext(AuthContext);
 
   return (
     <div className={styles.container}>
@@ -36,7 +28,7 @@ export default function Landing() {
           </div>
 
           <div className={styles.inputContainer}>
-            <button type="button" onClick={logIn}>
+            <button type="button" onClick={() => signIn("github")}>
               Entrar
             </button>
           </div>
@@ -45,3 +37,19 @@ export default function Landing() {
     </div>
   );
 }
+
+export const getServerSideProps = async ({ req, res }) => {
+  const session = await getSession({ req });
+
+  if (session) {
+    return {
+      props: { session },
+      redirect: {
+        destination: "/home",
+        permanent: false,
+      },
+    };
+  }
+
+  return { props: {} };
+};

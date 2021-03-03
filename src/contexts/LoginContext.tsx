@@ -1,12 +1,5 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import { signIn, signOut, useSession } from "next-auth/client";
-import { useRouter } from "next/router";
+import { createContext, ReactNode, useCallback, FormEvent } from "react";
+import { signIn, signOut, Provider } from "next-auth/client";
 
 interface UserProps {
   email: string | any;
@@ -15,57 +8,40 @@ interface UserProps {
 }
 
 interface ProviderProps {
-  user: UserProps;
-  logged: boolean;
-  logIn: () => void;
-  logOut: () => void;
+  logIn: (event: FormEvent) => void;
+  logOut: (event: FormEvent) => void;
 }
 
-export const LogInContext = createContext({} as ProviderProps);
+export const AuthContext = createContext({} as ProviderProps);
 
 interface LogInProviderProps {
   children: ReactNode;
+  session: any;
 }
 
-export function LogInProvider({ children }: LogInProviderProps) {
-  const [session] = useSession();
-  const [user, setUser] = useState({ name: null, image: null, email: null });
-  const [logged, setLogged] = useState(false);
+export function AuthProvider({ children, session }: LogInProviderProps) {
+  const logIn = useCallback((event: FormEvent) => {
+    event.preventDefault();
+    signIn("github", {
+      callbackUrl: "http://localhost:3000/home",
+    });
+  }, []);
 
-  useEffect(() => {
-    if (session !== undefined && session?.user) {
-      console.log(session);
-      console.log(session.user);
-      setUser(session.user);
-      setLogged(true);
-    } else {
-      console.log(false);
-      console.log({});
-      setLogged(false);
-      setUser({});
-    }
-  }, [session]);
-
-  function logIn() {
-    signIn();
-  }
-
-  function logOut() {
-    signOut();
-    setLogged(false);
-    setUser({});
-  }
+  const logOut = useCallback((event: FormEvent) => {
+    event.preventDefault();
+    signOut({ callbackUrl: "http:localhost:3000/" });
+  }, []);
 
   return (
-    <LogInContext.Provider
-      value={{
-        user,
-        logged,
-        logIn,
-        logOut,
-      }}
-    >
-      {children}
-    </LogInContext.Provider>
+    <Provider session={session}>
+      <AuthContext.Provider
+        value={{
+          logIn,
+          logOut,
+        }}
+      >
+        {children}
+      </AuthContext.Provider>
+    </Provider>
   );
 }

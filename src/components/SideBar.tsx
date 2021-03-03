@@ -3,12 +3,12 @@ import Link from "next/link";
 import { FiAward } from "react-icons/fi";
 import { BiHomeAlt, BiLogOut } from "react-icons/bi";
 import { useRouter } from "next/router";
-import { LogInContext } from "../contexts/LoginContext";
+import { AuthContext } from "../contexts/LoginContext";
 import { useContext } from "react";
 
 export function SideBar() {
   const { route } = useRouter();
-  const { logOut } = useContext(LogInContext);
+  const { logOut } = useContext(AuthContext);
 
   return (
     <div className={styles.container}>
