@@ -39,6 +39,10 @@
     width: 62px;
   }
 
+  .item {
+    padding-bottom: 1rem;
+  }
+
   .main > .item:hover {
     border-left: none;
     border-bottom: 4px solid #5965e0;
@@ -68,6 +72,19 @@
   justify-content: center;
 }
 
+.itemSelected {
+  width: 112px;
+  height: 56px;
+
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+
+  color: #5965e0;
+  border-left: 4px solid #5965e0;
+}
+
 .item:hover {
   color: #5965e0;
   border-left: 4px solid #5965e0;
@@ -77,4 +94,8 @@
   width: 2rem;
   height: 2rem;
   color: inherit;
+}
+
+.container footer {
+  padding: 2rem;
 }

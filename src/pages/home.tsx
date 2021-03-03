@@ -11,6 +11,9 @@ import { SideBar } from "../components/SideBar";
 import styles from "../styles/pages/Home.module.css";
 import { CountdownProvider } from "../contexts/CountdownContext";
 import { ChallengesProvider } from "../contexts/ChallengesContext";
+import { LogInContext } from "../contexts/LoginContext";
+import { useContext, useEffect } from "react";
+import { useRouter } from "next/router";
 
 interface HomeProps {
   level: number;
@@ -19,6 +22,13 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
+  const { logged } = useContext(LogInContext);
+  const route = useRouter();
+
+  useEffect(() => {
+    if (!logged) route.push("/");
+  }, [logged]);
+
   return (
     <ChallengesProvider
       level={props.level}

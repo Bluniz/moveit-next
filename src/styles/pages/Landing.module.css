@@ -64,35 +64,21 @@
   height: 60px;
 }
 
-.inputContainer input {
+.inputContainer button {
   border: none;
-
   width: inherit;
   height: inherit;
   background: linear-gradient(to right, var(--blue-dark), var(--blue));
-  border-radius: 8px;
-  text-align: center;
-  outline: 0;
-  color: #b2b9ff;
-}
-
-.inputContainer input::placeholder {
-  color: #b2b9ff;
-}
-
-.inputContainer button {
-  border: none;
-  height: 60px;
-  width: 80px;
-  background: var(--blue-dark);
   color: var(--white);
 
-  border-radius: 0 8px 8px 0px;
+  border-radius: 8px;
+
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
-.inputContainer button .buttonIcon {
-  width: 24px;
-  height: 24px;
+.inputContainer button:hover {
+  color: var(--blue-dark);
 }
 
 @media (max-width: 720px) {

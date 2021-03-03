@@ -1,8 +1,20 @@
 import styles from "../styles/pages/Landing.module.css";
 import { ImGithub } from "react-icons/im";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { LogInContext } from "../contexts/LoginContext";
 
 export default function Landing() {
+  const { logged, logIn } = useContext(LogInContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (logged) {
+      router.push("/home");
+    }
+  }, [logged]);
+
   return (
     <div className={styles.container}>
       <div>
@@ -24,9 +36,8 @@ export default function Landing() {
           </div>
 
           <div className={styles.inputContainer}>
-            <input type="text" placeholder="Digite seu username" />
-            <button type="button">
-              <AiOutlineArrowRight className={styles.buttonIcon} />
+            <button type="button" onClick={logIn}>
+              Entrar
             </button>
           </div>
         </div>
