@@ -11,8 +11,7 @@ import { SideBar } from "../components/SideBar";
 import styles from "../styles/pages/Home.module.css";
 import { CountdownProvider } from "../contexts/CountdownContext";
 import { ChallengesProvider } from "../contexts/ChallengesContext";
-import { useContext, useEffect } from "react";
-import { useRouter } from "next/router";
+
 import { getSession } from "next-auth/client";
 
 interface HomeProps {
@@ -22,8 +21,6 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
-  const route = useRouter();
-
   return (
     <ChallengesProvider
       level={props.level}

@@ -2,17 +2,13 @@ import styles from "../styles/pages/Landing.module.css";
 import { ImGithub } from "react-icons/im";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/LoginContext";
-import { getSession, signIn } from "next-auth/client";
+import { getSession } from "next-auth/client";
 
 export default function Landing() {
   const { logIn } = useContext(AuthContext);
 
   return (
     <div className={styles.container}>
-      <div>
-        <img src="/icons/big-logo.svg" alt="icon-tsg" className={styles.big} />
-      </div>
-
       <div className={styles.content}>
         <div className={styles.mainContainer}>
           <img
@@ -20,16 +16,16 @@ export default function Landing() {
             alt="logo-full"
             className={styles.logoFull}
           />
-          <br />
-          <strong>Bem-vindo</strong>
+
+          <strong>Bem-vindo a sua plataforma de foco e exercicios.</strong>
           <div className={styles.git}>
             <ImGithub className={styles.icon} />
             <strong>Faça login com seu Github para começar</strong>
           </div>
 
           <div className={styles.inputContainer}>
-            <button type="button" onClick={() => signIn("github")}>
-              Entrar
+            <button type="button" onClick={logIn}>
+              ENTRAR
             </button>
           </div>
         </div>
