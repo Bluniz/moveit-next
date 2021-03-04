@@ -31,7 +31,11 @@ export default function Home(props: HomeProps) {
         <SideBar />
         <div className={styles.container}>
           <Head>
-            <title>Início | move.it</title>
+            <meta
+              property="og:title"
+              content="Início | DEV.ACTIVITY"
+              key="title"
+            />
           </Head>
 
           <ExperienceBar />

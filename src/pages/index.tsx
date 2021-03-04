@@ -3,12 +3,16 @@ import { ImGithub } from "react-icons/im";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/LoginContext";
 import { getSession } from "next-auth/client";
+import Head from "next/head";
 
 export default function Landing() {
   const { logIn } = useContext(AuthContext);
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Login | DEV.ACTIVITY</title>
+      </Head>
       <div className={styles.content}>
         <div className={styles.mainContainer}>
           <img

@@ -7,7 +7,7 @@
   justify-content: center;
   color: #ffff;
 
-  background: url("/background.svg") no-repeat;
+  background: linear-gradient(to bottom, #122230 0%, #192d3e 100%);
 
   overflow: hidden;
 }
@@ -90,7 +90,6 @@
 .inputContainer button:hover {
   background: var(--white);
   color: #192d3e;
-  border-color: #1e5889;
 }
 
 @media (max-width: 720px) {
