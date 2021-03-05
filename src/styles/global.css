@@ -16,6 +16,9 @@
   --blue: #5965e0;
   --blue-dark: #4953b8;
   --blue-twitter: #2aa9e0;
+  --blue-new: #b2b9ff;
+  --main: #122230;
+  --mainAlter: #192d3e;
 }
 
 @media (max-width: 1060px) {
@@ -31,7 +34,7 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--main);
   color: var(--text);
 }
 

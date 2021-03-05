@@ -4,7 +4,7 @@
   bottom: 0;
   width: 112px;
   box-shadow: 0px 0px 60px 0px #000000 5%;
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+  background: var(--white);
   filter: drop-shadow(0px 0px 60px rgba(0, 0, 0, 0.05));
 
   display: flex;
@@ -45,7 +45,7 @@
 
   .main > .item:hover {
     border-left: none;
-    border-bottom: 4px solid #5965e0;
+    border-bottom: 4px solid var(--mainAlter);
   }
 }
 .container header {
@@ -81,13 +81,13 @@
   align-items: center;
   justify-content: center;
 
-  color: #5965e0;
-  border-left: 4px solid #5965e0;
+  color: var(--mainAlter);
+  border-left: 4px solid var(--mainAlter);
 }
 
 .item:hover {
-  color: #5965e0;
-  border-left: 4px solid #5965e0;
+  color: var(--mainAlter);
+  border-left: 4px solid var(--mainAlter);
 }
 
 .image {

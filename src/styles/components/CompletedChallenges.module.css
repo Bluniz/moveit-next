@@ -4,8 +4,9 @@
   justify-content: space-between;
   margin: 1.5rem 0;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #d7d8da;
+  border-bottom: 1px solid var(--white);
   font-weight: 500;
+  color: var(--white);
 }
 
 .completedChallengesContainer span:first-child {

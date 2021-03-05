@@ -7,7 +7,7 @@
   justify-content: center;
   color: #ffff;
 
-  background: linear-gradient(to bottom, #122230 0%, #192d3e 100%);
+  background: linear-gradient(to bottom, var(--main) 0%, var(--mainAlter) 100%);
 
   overflow: hidden;
 }
@@ -48,7 +48,7 @@
 
   gap: 2rem;
 
-  color: #b2b9ff;
+  color: var(--blue-new);
 }
 
 .git > strong {
@@ -155,36 +155,5 @@
 
   .inputContainer {
     width: 280px;
-  }
-}
-
-@media (max-width: 768px) {
-  .mainContainer {
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .mainContainer > .logoFull {
-    width: 400px;
-  }
-
-  .mainContainer > strong {
-    font-size: 22px;
-    text-align: center;
-  }
-
-  .git > strong {
-    font-size: 22px;
-  }
-
-  .icon {
-    width: 60px;
-    height: 60px;
-  }
-
-  .inputContainer {
-    width: 340px;
   }
 }
