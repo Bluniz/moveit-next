@@ -31,11 +31,7 @@ export default function Home(props: HomeProps) {
         <SideBar />
         <div className={styles.container}>
           <Head>
-            <meta
-              property="og:title"
-              content="Início | DEV.ACTIVITY"
-              key="title"
-            />
+            <title>Início | DEV.ACTIVITY</title>
           </Head>
 
           <ExperienceBar />

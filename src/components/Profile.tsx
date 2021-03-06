@@ -2,12 +2,15 @@ import styles from "../styles/components/Profile.module.css";
 import { useContext } from "react";
 import { ChallengesContext } from "../contexts/ChallengesContext";
 import { useSession } from "next-auth/client";
+import { getUserID } from "../utils";
 
 export function Profile() {
   const { level } = useContext(ChallengesContext);
   const session = useSession();
 
   const user = session[0].user;
+
+  console.log(getUserID(user.image));
 
   return (
     <div className={styles.profileContainer}>

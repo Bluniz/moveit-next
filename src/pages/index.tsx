@@ -1,7 +1,7 @@
 import styles from "../styles/pages/Landing.module.css";
 import { ImGithub } from "react-icons/im";
 import { useContext } from "react";
-import { AuthContext } from "../contexts/LoginContext";
+import { AuthContext } from "../contexts/AuthContext";
 import { getSession } from "next-auth/client";
 import Head from "next/head";
 

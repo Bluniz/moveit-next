@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth, { InitOptions } from "next-auth";
 import Providers from "next-auth/providers";
-import { redirect } from "next/dist/next-server/server/api-utils";
 
 const options: InitOptions = {
   providers: [
